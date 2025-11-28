@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import type { UsuarioResponse } from "../types/response/usuarios.response";
+import { UsuarioCard } from "../components/usuarios/UsuarioCard";
 
 export const UsuariosPage = () => {
     //let titulo = "MI APP USUARIOS"
@@ -16,9 +17,7 @@ export const UsuariosPage = () => {
         <>
             {/* renderizado de listas */}
             {usuarios.map((usuario, index) => (
-                <div key={index}>
-                    {JSON.stringify(usuario)}
-                </div>
+                <UsuarioCard usuario={usuario}/>
             ))}
             <div></div>
             <div></div>
