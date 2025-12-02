@@ -1,34 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { Link } from './Link'
-import { HomePage } from './pages/Home'
 import { UsuariosPage } from './pages/Usuario.page'
+import { BrowserRouter, Route, Routes } from 'react-router'
+import { UsuarioDetallePage } from './pages/UsuarioDetalle'
+import { HomePage } from './pages/Home'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-      <div>
-        <Link rutaLink='https://vite.dev' rutaImg={viteLogo}/>
-        <Link rutaLink='https://react.dev' rutaImg={reactLogo}/>
-      </div>
-      <h1 >VitE + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)} >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <HomePage />
-      <UsuariosPage/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />}/>
+          <Route path='/usuario' element={<UsuariosPage/>}/>
+          <Route path='/usuario/detalle' element={<UsuarioDetallePage/>}/>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
