@@ -41,7 +41,7 @@ export const UsuarioForm = ({usuario, onCancel}: UsuarioDetalleProps) => {
                      <div>
                         <label>Rol</label>
                         <Dropdown
-                            value={usuarioFormData!.rol}
+                            value={usuarioFormData ? usuarioFormData.rol : ''}
                             onChange={(value) => setUsuarioFormData({...usuarioFormData, rol: rolOptions.find(rol=>value===rol.value)?.label || ''})}
                             options={rolOptions}
                             placeholder="Seleccione un rol"

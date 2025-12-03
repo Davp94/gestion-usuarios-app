@@ -17,7 +17,7 @@ export const Dropdown = ({
   const [selectedOption, setSelectedOption] = useState<{ value: number; label: string }>();
 
   useEffect(() => {
-    setSelectedOption(options.find((opt) => opt.value === value));
+    setSelectedOption(options.find((opt) => opt.label === value));
   }, [onChange]);
   return (
     <>
