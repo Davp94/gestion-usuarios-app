@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router";
 import type { UsuarioResponse } from "../../types/response/usuarios.response";
 import { useEffect, useState } from "react";
+import { Dropdown } from "../common/Dropdown";
 interface UsuarioDetalleProps {
     usuario: UsuarioResponse | null
+    onCancel: (modalOpen: boolean) => void
 }
-export const UsuarioForm = ({usuario}: UsuarioDetalleProps) => {
+export const UsuarioForm = ({usuario, onCancel}: UsuarioDetalleProps) => {
     
     const [usuarioFormData, setUsuarioFormData] = useState<UsuarioResponse>();
 
@@ -13,6 +15,8 @@ export const UsuarioForm = ({usuario}: UsuarioDetalleProps) => {
             setUsuarioFormData(usuario);
         }
     }
+
+    const rolOptions = [{value: 1, label: 'ADMIN'}, {value: 2, label: 'SUPERVISOR'}]
 
     useEffect(()=>{
         initComponent();
@@ -35,8 +39,13 @@ export const UsuarioForm = ({usuario}: UsuarioDetalleProps) => {
                 </div>
                 <div>
                      <div>
-                        <label>Roles</label>
-                        <input type="text" required value={usuarioFormData?.rol}/>
+                        <label>Rol</label>
+                        <Dropdown
+                            value={usuarioFormData!.rol}
+                            onChange={(value) => setUsuarioFormData({...usuarioFormData, rol: rolOptions.find(rol=>value===rol.value)?.label || ''})}
+                            options={rolOptions}
+                            placeholder="Seleccione un rol"
+                        />
                     </div>
                 </div>
                 <div>
