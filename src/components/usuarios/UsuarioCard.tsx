@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import type { UsuarioResponse } from "../../types/response/usuarios.response";
 import { useUserStore } from "../../state-management/user.store";
-import { Pencil, Trash } from "lucide-react";
+import { Eye, Pencil, Trash } from "lucide-react";
 interface UsuarioDetalleProps {
     usuario: UsuarioResponse
     setModalOpen: (usuario: UsuarioResponse) => void;
@@ -24,7 +24,7 @@ export const UsuarioCard = ({usuario, setModalOpen}: UsuarioDetalleProps) => {
     }
     return (
         <>
-            <div className="usuarios-card" onClick={()=>onSubmit()}>
+            <div className="usuarios-card">
                 <div className="usuarios-card__header">
                     <label className="usuarios-card__name">{usuario.nombre}</label>
                     <label className="usuarios-card__badge">
@@ -33,6 +33,7 @@ export const UsuarioCard = ({usuario, setModalOpen}: UsuarioDetalleProps) => {
                 </div>
                 <div className="usuarios-card__body">
                     <label className="usuarios-card__email">{usuario.correo}</label>
+                    <button className="usuarios-card__email" onClick={()=>onSubmit()}><Eye/></button>
                 </div>
                 <div className="usuarios-card__actions">
                     <button className="usuarios-card__button--edit" onClick={() => handleEditUsuario()}><Pencil/>Editar</button>

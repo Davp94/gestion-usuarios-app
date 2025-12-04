@@ -10,10 +10,10 @@ export const Modal = ({isOpen, onClose, children, title}: ModalProps) => {
     if(!isOpen) return null;
 
     return (
-        <div className="modal" onClick={onClose}>
+        <div className="modal">
             <div className="modal__content">
                 <div className="modal__header">
-                    <label className="modal__title"></label>
+                    <label className="modal__title">Usuarios</label>
                     <button className="modal__close" onClick={onClose}>
                         <X />
                     </button>

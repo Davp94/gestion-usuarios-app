@@ -23,8 +23,8 @@ export const useUserStore = create<UserStore>((set, get) => ({
   //Estado inicial
   usuarios: [
     { id: 1, nombre: "usuario 1", correo: "correo1@test.com", rol: "ADMIN" },
-    { id: 2, nombre: "usuario 2", correo: "correo2@test.com", rol: "SIMPLE" },
-    { id: 3, nombre: "usuario 3", correo: "correo3@test.com", rol: "SIMPLE" },
+    { id: 2, nombre: "usuario 2", correo: "correo2@test.com", rol: "SUPERVISOR" },
+    { id: 3, nombre: "usuario 3", correo: "correo3@test.com", rol: "DEV" },
   ],
   usuarioSelected: null,
   createUsuario: (usuarioRequest) => {

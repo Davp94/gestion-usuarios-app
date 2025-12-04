@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 
 interface DropdownProps {
   value: string;
-  onChange: (value: number) => void;
+  onChange: (value: string) => void;
   options: { value: number; label: string }[];
+  error?: string;
   placeholder?: string;
 }
 export const Dropdown = ({
   value,
   onChange,
+  error,
   options,
   placeholder,
 }: DropdownProps) => {
@@ -17,12 +19,17 @@ export const Dropdown = ({
   const [selectedOption, setSelectedOption] = useState<{ value: number; label: string }>();
 
   useEffect(() => {
+    console.log('VALUE', value);
+    console.log('options', options);
+    const optionFInded = options.find((opt) => opt.label === value);
+    console.log('OPTION FINDED', optionFInded)
     setSelectedOption(options.find((opt) => opt.label === value));
   }, [onChange]);
   return (
     <>
       <div className="dropdown">
         <button
+          type="button"
           className="dropdown__trigger"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -39,7 +46,7 @@ export const Dropdown = ({
               <li
                 key={option.value}
                 onClick={() => {
-                  onChange(option.value);
+                  onChange(option.label);
                   setIsOpen(false);
                 }}
                 className="dropdown__item"
@@ -50,6 +57,7 @@ export const Dropdown = ({
           </ul>
         )}
       </div>
+      {error && <label>{error}</label>}
     </>
   );
 };
